@@ -5,10 +5,10 @@
 import("//build/config/jumbo.gni")
 import("//build/config/ui.gni")
 import("//gpu/vulkan/features.gni")
+import("//neva/neva.gni")
 import("//ui/ozone/ozone.gni")
 import("//ui/ozone/ozone_extra.gni")
 import("//testing/test.gni")
-import("//neva/neva.gni")
 
 assert(use_ozone)
 
@@ -69,9 +69,12 @@ constructor_list_cc_file = "$target_gen_dir/constructor_list.cc"
 jumbo_component("ozone_base") {
   sources = [
     "ozone_base_export.h",
+    "public/clipboard_delegate.cc",
     "public/clipboard_delegate.h",
     "public/cursor_factory_ozone.cc",
     "public/cursor_factory_ozone.h",
+    "public/fake_clipboard_delegate.cc",
+    "public/fake_clipboard_delegate.h",
     "public/gl_ozone.h",
     "public/gpu_platform_support.cc",
     "public/gpu_platform_support.h",

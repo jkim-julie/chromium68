@@ -21,10 +21,15 @@ namespace ui {
 //
 class OZONE_BASE_EXPORT ClipboardDelegate {
  public:
+  ClipboardDelegate();
+  virtual ~ClipboardDelegate();
+
   // DataMap is a map from "mime type" to associated data, whereas
   // the data can be organized differently for each mime type.
   using Data = std::vector<uint8_t>;
   using DataMap = std::unordered_map<std::string, Data>;
+
+  static ClipboardDelegate* GetInstance();
 
   // Offers a given clipboard data 'data_map' to the host system clipboard.
   //
