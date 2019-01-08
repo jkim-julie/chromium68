@@ -87,6 +87,7 @@ uint32_t DisplayList::UpdateDisplay(const Display& display, Type type) {
   }
   if (local_display->rotation() != display.rotation()) {
     local_display->set_rotation(display.rotation());
+    LOG(ERROR) << __FUNCTION__ << ", display.rotation:" << display.rotation();
     changed_values |= DisplayObserver::DISPLAY_METRIC_ROTATION;
   }
   if (local_display->device_scale_factor() != display.device_scale_factor()) {

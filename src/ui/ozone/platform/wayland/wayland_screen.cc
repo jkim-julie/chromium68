@@ -31,11 +31,14 @@ void WaylandScreen::OnOutputRemoved(uint32_t output_id) {
 void WaylandScreen::OnOutputMetricsChanged(uint32_t output_id,
                                            const gfx::Rect& new_bounds,
                                            float device_pixel_ratio,
-                                           bool is_primary) {
+                                           bool is_primary,
+                                           int32_t output_transform) {
   display::Display changed_display(output_id);
   changed_display.set_device_scale_factor(device_pixel_ratio);
   changed_display.set_bounds(new_bounds);
   changed_display.set_work_area(new_bounds);
+  LOG(ERROR) << __FUNCTION__ << ", output_transform:" << output_transform;
+  changed_display.set_rotation(static_cast<display::Display::Rotation>(output_transform));
 
   display_list_.UpdateDisplay(
       changed_display, is_primary ? display::DisplayList::Type::PRIMARY

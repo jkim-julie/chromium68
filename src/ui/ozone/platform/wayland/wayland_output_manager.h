@@ -44,7 +44,8 @@ class WaylandOutputManager : public WaylandOutput::Delegate {
   // WaylandOutput::Delegate:
   void OnOutputHandleMetrics(uint32_t output_id,
                              const gfx::Rect& new_bounds,
-                             int32_t scale_factor) override;
+                             int32_t scale_factor,
+                             int32_t output_transform) override;
 
   std::vector<std::unique_ptr<WaylandOutput>> output_list_;
 

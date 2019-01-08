@@ -107,10 +107,12 @@ bool WaylandOutputManager::IsPrimaryOutput(uint32_t output_id) const {
 
 void WaylandOutputManager::OnOutputHandleMetrics(uint32_t output_id,
                                                  const gfx::Rect& new_bounds,
-                                                 int32_t scale_factor) {
+                                                 int32_t scale_factor,
+                                                 int32_t output_transform) {
   if (wayland_screen_) {
     wayland_screen_->OnOutputMetricsChanged(output_id, new_bounds, scale_factor,
-                                            IsPrimaryOutput(output_id));
+                                            IsPrimaryOutput(output_id),
+                                            output_transform);
   }
 }
 

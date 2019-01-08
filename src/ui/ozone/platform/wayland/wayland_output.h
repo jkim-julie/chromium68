@@ -24,7 +24,8 @@ class WaylandOutput {
 
     virtual void OnOutputHandleMetrics(uint32_t output_id,
                                        const gfx::Rect& new_bounds,
-                                       int32_t scale_factor) = 0;
+                                       int32_t scale_factor,
+                                       int32_t output_transform) = 0;
   };
 
   WaylandOutput(const uint32_t output_id, wl_output* output);
@@ -69,6 +70,7 @@ class WaylandOutput {
   wl::Object<wl_output> output_;
   float device_scale_factor_;
   gfx::Rect rect_in_physical_pixels_;
+  int32_t output_transform_;
 
   Delegate* delegate_ = nullptr;
 
